@@ -1,0 +1,317 @@
+---
+title: "Lab 3: Basics of dplyr and ggplot"
+author: "Fahd Alhazmi"
+output:
+  html_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+
+In this lab, we’ll learn about the fancy and beautiful R. We’ll learn first the basics of `dplyr` library and then we will head to make state-of-the-art data visualizations using `ggplot2`. Both of those libraries come as a part of a collection of packages called `tidyverse`. According to their (website)[https://www.tidyverse.org]: 'The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures'. Our goal is to master those two libraries.
+
+The common theme of this lab is the use of grammar. `ggplot2` presents a grammar for data visualization while `dplyr` presents a grammar for data wrangling. We’ll need to learn those grammar rules before we can use those libraries but you’ll see shortly how little grammar can pay off. 
+
+# The dplyr library
+
+Let’s start with a bit of data wrangling before we make some pretty graphics.
+
+The five main verbs for data wrangling are:
+
++ `select()`: take a subset of the columns (i.e., variables)
++ `filter()`: take a subset of the rows (i.e., observations)
++ `mutate()`: add or modify existing columns
++ `arrange()`: sort the rows
++ `summarize()`: aggregate the data across rows (e.g., group it according to some criteria)
+
+Each of those verbs is an actual function and each of those functions takes a dataframe as input and returns another dataframe. The combination of those verbs will enable us to create infinite ways to perform descriptive statistics. In this lab, we are covering `select()`, `filter()` and `summarize()`. We’ll cover them all in the next lab.
+
+If you have not installed dplyr or ggplot2 before, then you can use install.packages:
+
+```{r,eval=FALSE}
+install.packages('dplyr')
+install.packages('ggplot2')
+```
+
+Let’s first bring the dplyr and the babynames dataset again:
+
+```{r}
+library(dplyr)
+library(babynames)
+```
+
+## select() and filter()
+
+We already talked about how to select columns by index or by names, and how to filter rows by index or by logical. Here we are going to repeat all that but this time we’ll do it better.
+
+Note that if you are reading your data from a source file, then you’ll need a function like ```read.csv``` or ```read.table``` to read the data. 
+
+Now we can select any set of columns using the `select` method. The first input is the name of the dataframe we are using, and the following inputs are the column names we want to select. Note that it is not necessary to wrap column names in quotation marks.
+
+```{r}
+select(babynames, year, name, n)
+```
+
+The equivelant command we learned in the last lab was 
+
+```{r}
+babynames[, c('year','name','n')]
+```
+
+Similarly, the first input to `filter()` is the dataframe and then we want to write the logical conditions that should be evaluated on every row. Let’s say we only want female names in the year 1975:
+
+```{r}
+filter(babynames, sex == 'F')
+```
+
+The equivalent command we covered in the last lab was 
+
+```{r}
+babynames[babynames$sex == 'F' , ]
+```
+
+Now, what if we want to do those two together: we first want to filter rows that meet a specific condition and then we want to select only a specific column? To do this, we can use the so-called pipe operator ```%>%``` which essentially takes the output of the command on the left as input to the command on the right. Let’s do an example:
+
+```{r}
+babynames %>%
+	filter(year == 1950 & sex == 'F') %>%
+	select(name)
+```
+
+Which should return the female names in 1950.
+
+Note that
+
+```{r, eval=FALSE} 
+dataframe %>% filter(condition)
+```
+
+Is actually equivalent to ```filter(dataframe, condition)```. However, using the operator ```%>%``` makes our code very readable.
+
+## summarize() and group_by()
+
+Until now, we have covered how to select columns or filter rows -- but we haven’t really talked about descriptive statistics. `summarize()` will convert a set of numbers (or measurements) into a single number. It is how we can use the descriptive statistic functions we discussed last time. It will only output a single row. Let’s see an example:
+
+```{r}
+babynames %>% 
+  summarize( N=n(), 
+             first_year = min(year),  
+             last_year=max(year), 
+             avg_n = mean(n), 
+             max_n= max(n), 
+             min_n= min(n))
+```
+
+Here, `n()` means ```nrow(babynames)```. Also note that we defined a completely new set of variables but in each of those new variables, we used column names (as vectors/lists) and did whatever we want to do with those columns to make summaries.
+
+But this doesn’t really give enough information. We can use ```group_by()``` to break those summaries by a grouping variable like sex.
+
+```{r}
+babynames %>% 
+  group_by(sex)  %>% 
+  summarize( N=n(), 
+             first_year = min(year),  
+             last_year=max(year),   
+             n_females=sum(sex == 'female') , 
+             avg_n = mean(n))
+```
+
+Note that we now have two rows, one for each grouping level. And only then we can compare different things.
+
+One last example: how to get the most popular names after 2000, in a year-by-year basis?
+
+```{r}
+popular_names <- babynames %>% 
+                    filter(year >= 2015) %>% 
+                    group_by(sex, year)  %>%  
+                    summarize(total_n=sum(n)) %>% 
+                    arrange(desc(total_n))
+popular_names
+```
+
+And We here got a nice list of popular names, by sex and year. Notice that here we used `arrange` to sort the rows according to the input inside.
+
+# Basics of ggplot2
+
+Let’s now shift our attention to data visualization. R has a set of basic visualization tools (e.g., plot, hist, etc) but we’ll learn a very cool data visualization package called ggplot2.
+
+First, let’s install the gapminder package
+
+```{r, eval=FALSE}
+install.packages('gapminder')
+```
+
+Then, we import ggplot2 and the gapminder dataset.
+
+```{r}
+library(ggplot2)
+library(gapminder)
+data <- gapminder
+```
+
+Now let’s use data wrangling and ggplot2 together in a this dataset. First, have a look at the head of the table:
+
+```{r}
+head(data)
+```
+
+There is actually a very cool function that makes a useful summary
+
+```{r}
+summary(data)
+```
+
+And it shows that we have 12 records of Afghanistan, 12 records of Albania, etc. Then the numerical columns, we see the minimum, maximum and the mean of each column. After we are satisfied with those numbers, let’s now make some visualization.
+
+Let’s start with making a summary of all the data
+
+```{r}
+data_summary <- data %>% 
+                  summarize(avg_life_exp = mean(lifeExp))
+data_summary
+```
+
+But this little summary will be much better if we break it by year using group_by
+
+```{r}
+data_summary <- data %>%  
+                  group_by(year) %>% 
+                  summarize(avg_life_exp = mean(lifeExp))
+data_summary
+```
+
+Now that we have the average life expectancy by year, we can go ahead and use ggplot to visualize.
+
+```{r}
+ggplot(data_summary, aes(x=year, y=avg_life_exp))+
+  geom_point()
+```
+
+Which makes a nice plot of black dots that shows the progress over the years in life expectancy. 
+
+So, speaking of the code, what is going on here? And how do we read this code?
+
+The ggplot function is based on the idea of layers: each data visualization is composed of layers and a common logic. The common logic is set in the first line where we identify the data we are using, and then inside the ```aes()``` function we define the aesthetics of the plot like the x-variable and the y-variable. After we are done with those basic definitions, now we want to add layers on top of that.
+
+```{r, eval=FALSE}
+ggplot(data, aes(x= name_of_x_variable, y=name_of_y_variable)) +
+	geom_layer(properties_of_this_layer) +
+	geom_layer(properties_of_this_layer) +
+	geom_layer(properties_of_this_layer)
+```
+
+The plus sign is what we use to add layers on top of one another.
+
+Let’s now look at some basic layers:
+
+## ylab() and xlab() 
+
+ylab() and xlab() change the labels of the y-axis and the x-axis
+
+```{r}
+ggplot(data_summary, aes(x=year, y=avg_life_exp))+
+  geom_point() +
+  xlab('Year') +
+  ylab('Average Life Expectancy')
+```
+
+## ggtitle()
+ggtitle() adds a title to the plot
+
+```{r}
+ggplot(data_summary, aes(x=year, y=avg_life_exp))+
+  geom_point() +
+  xlab('Year') +
+  ylab('Average Life Expectancy') +
+  ggtitle('Life expectancy over the years')
+```
+
+## Color and Fill
+
+Now, we want to make things more interesting. I want to see the same plot but we want to break things down in a continent by continent so that we see which continents are doing better than others. To do so, we’ll need to add continent to the group_by function
+
+```{r}
+data_summary <- data %>%  
+                  group_by(year, continent) %>% 
+                  summarize(avg_life_exp = mean(lifeExp))
+data_summary
+```
+
+Hopefully you now see that we have a separate column for continent and we are now able to use that column to color things. In ggplot2, we can now add color to the ```aes```
+
+```{r}
+ggplot(data_summary, aes(x=year, y=avg_life_exp, color=continent))+
+  geom_point() +
+  xlab('Year') +
+  ylab('Average Life Expectancy') +
+  ggtitle('Life expectancy over the years')
+```
+
+And I hope you see that we now got 5 different lines, all in different colors. Note that we can easily add a line to the plot by adding a new layer ```geom_line()```
+
+```{r}
+ggplot(data_summary, aes(x=year, y=avg_life_exp, color=continent))+
+  geom_point() +
+  geom_line() +
+  xlab('Year') +
+  ylab('Average Life Expectancy') +
+  ggtitle('Life expectancy over the years')
+```
+
+Which now makes a line that connects all points -- again broken down by continents.
+
+## Fill fills in color
+
+Now I am going to use a different plot: bar plot for life expectancy. We won’t be using the ```year``` information so here we are doing an overall average. Note two things: first, the x-axis inside aes has now changed from year to continent. Also, we have a new input called fill. Finally, we see that we used a different layer called ```geom_bar(stat=’identity’)``` which simply makes a bar plot using the exact numbers in the y-axis.
+
+```{r}
+data_summary <- data %>%  
+                  group_by(continent) %>% 
+                  summarize(avg_life_exp = mean(lifeExp))
+data_summary
+```
+
+```{r}
+ggplot(data_summary, aes(x=continent, y=avg_life_exp, fill=continent))+
+  geom_bar(stat='identity') +
+  xlab('Year') +
+  ylab('Average Life Expectancy') +
+  ggtitle('Life expectancy over the years')
+```
+
+Note that in both color and fill, when used inside aes, we are not deciding the colors to use but rather the variable that we should use to fill that color.
+
+This marks the end of today’s lesson. We’ll now do some exercises.
+
+# Excercises
+## Exercise 1
+
+How long are people living? Make a histogram using ```geom_histogram``` layer. Experiment with bins and colors (i.e., geom_histogram(bins=20, color=”black”).
+
+## Exercise 2
+Draw a scatter plot of life expectancy by year using only Spain. (Here, you’ll need to use dplyr’s filter command).
+
+## Exercise 3
+Let’s make the same scatter plot but for multiple countries and using gdpPercap. Again, you’ll use the filter command. Let’s say we want to use Mexico, Canada and Iran. We can use the %in% operator to find which elements belong to a given list. For example,
+
+```{r}
+countries <- c('France', 'Brazil', 'China', 'Canada', 'Iran', 'United States')
+countries %in% c('Canada','Iran')
+```
+
+Which should print the elements in countries that are in the second smaller list. You want to use that inside filter too.
+
+Don’t forget to make a scatter plot and a line (geom_line). Make them in different colors, and also use labeled axes.
+
+
+# More resources
+
+* Don't forget to check the data wrangling and visualization cheatsheets in blackbaord. We'll revisit them next class.
+* What you can do with ggplot ? Have a look: http://www.ggplot2-exts.org/gallery/
+* How to find help with ggplot? Come here https://ggplot2.tidyverse.org/reference/index.html
+* A nice tutorial on data types in R. We have covered most of it but you should have a look: https://psyr.org/data-types.html
+* A nice tutorial on data visualization in ggplot. With today's materials, you should be able to read through it: https://psyr.org/visualising-data.html
+* A more advanced tutorial on data visualization in ggplot from the creator of ggplot2 an d dplyr (and a bunch of other libraries): https://r4ds.had.co.nz/data-visualisation.html

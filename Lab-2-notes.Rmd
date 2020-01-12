@@ -1,0 +1,481 @@
+---
+title: "Lab 2: Basics of R, again"
+author: "Fahd Alhazmi"
+output:
+  html_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+# Core functions you need to know and probably share with 5 of your friends
+
+Let’s talk more about functions. Most of what you’ll do in R will be learning how to use functions. You’ll rarely need to write things up from scratch. Let’s see some common functions that we’ll use here and then.
+
+## Housekeeping: install.packages(), library(), getwd(), setwd()
+
+In R, we often deal with packages (or sets of functions that others wrote to make our lives easier). To use those packages, we first need to install those packages into our computers. To do this, we will use install.packages(x) where x is the name of the package. Let’s say we want to install a package called "babynames". We can simply type:
+
+```{r, eval=FALSE}
+install.packages("babynames")
+```
+
+And you’ll soon see some colored output from R telling you how things are going.
+
+Now that we have installed the package into our computer, we need to import it to R and start using it. We can use `library` to do this.
+
+```{r, eval=FALSE}
+library("babynames")
+```
+
+This command will make the functions (or data) in this package available for us to use.
+
+Handing working directories in R can be tricky but let’s prepare for the worst and hope for the best. In R, there is this notion of “working directory” and it is the address in your file system that R is running at. Later, we’ll need to read files and write files and hence we'll need to handle file system properly. To do those we’ll first need to know where we are so that we can point to the right file. I can’t give you directions to the Empire State if I don’t know what is your starting point.
+
+We we’ll use ``getwd()`` to “get the working directory” which R recognizes. Files in this working directory can be read easily by using their names. For example, let’s say I want to read a table called `names.csv` (this following code will not run and it just for illustration):
+
+```{r, eval=FALSE}
+data <- read.csv('names.csv')
+```
+
+It will only work if there exists a table called names.csv in the current working directory. How to get that? Here we use 
+
+```{r, eval=FALSE}
+getwd()
+```
+
+More often, we want to change that working directory. Let’s say that the table names.csv is in another sub-sub-sub-sub-sub-sub directory. In this case, you will need to read the table using the full path of the file:
+
+```{r, eval=FALSE}
+data<- read.csv('folder/subfolder/subsubfolder/subsubsubfolder/names.csv')
+```
+
+That’s because R is looking at Franklin Ave station and you are referring to a building at 34th Station. To teleport from a directory to another, we can use setwd() and change the working directory:
+
+```{r, eval=FALSE}
+setwd('folder/subfolder/subsubfolder/subsubsubfolder')
+```
+
+This will make the subsubsubfolder our new working directory and now we can simply call the file `names.csv` without using any folders before the name.
+
+This is very important as we dive deeper to read and write data. For now, however, you can just move on.
+
+## Statistical functions: mean, median, sum, var, sd, max, min, table, sort, unique
+
+R is statistical language and it has tons of functions doing all sorts of statistics. Let’s discuss a few functions and explore the rest as we progress in this course. Those functions usually require a set of numbers as inputs. Let’s define a set of numbers as we did last time (we called it a vector):
+
+```{r}
+numbers <- c(4,3,6,6,3,3,5,3,2,7,3,5,6,3,2,1,5,6,2,12,3,4,5,5)
+```
+
+Calculate the sum of those numbers:
+
+```{r}
+sum(numbers)
+```
+
+Calculate the length of this list of numbers:
+
+```{r}
+length(numbers)
+```
+
+We can calculate the mean of those numbers by dividing the sum over the length:
+
+```{r}
+sum(numbers) / length(numbers)
+```
+
+Or we can simply use `mean`
+
+```{r}
+mean(numbers)
+```
+
+We can also find the median 
+
+```{r}
+median(numbers)
+```
+
+Or the variance of those numbers
+
+```{r}
+var(numbers)
+```
+
+And from the variance, we can find the standard deviation using another function: the square root
+
+```{r}
+sqrt(var(numbers)) 
+```
+
+Or we can use `sd`
+
+```{r}
+sd(numbers)
+```
+
+We can also use sort to sort those numbers from lowest to highest:
+
+```{r}
+sort(numbers)
+```
+
+or from the hieghest to lowest by changing the value of `decreasing` input:
+
+```{r}
+sort(numbers, decreasing=TRUE)
+```
+
+Remember, sort returns another vector that we can easily play with. For example, we can use the result of sort to find the minimum number in the list by selecting the first element after the sorting:
+
+```{r}
+sort(numbers)[1]
+```
+
+Or the maximum number
+
+```{r}
+sort(numbers, decreasing=TRUE)[1]
+```
+
+Notice that we can use `length(numbers)` instead of `1` to index the location of the last element in a vector.
+
+We can instead use `max` and `min` functions to get the same results:
+
+```{r}
+max(numbers)
+```
+
+```{r}
+min(numbers) 
+```
+
+Let’s see one more function: `unique` which returns a list of unique elements in a given set of numbers. We make use of this function all the time. 
+
+```{r}
+numbers <- c(1,1,1,2,2,2,3,3,3,4,4,4)
+unique(numbers)
+```
+
+Now, I am going to give you a function and ask you to guess what this function is doing! 
+
+```{r}
+table(numbers)
+```
+
+Do you have any ideas? Well, how do we know what functions do and where to read help? We can type a question mark before the name of the function which will give us a readable explanation of what that function is doing with examples and free donuts.
+
+```{r, eval=FALSE}
+?table
+```
+
+## Variable Information functions: length, class, is.numeric, as.numeric, is.character, as.charachter
+
+We have already talked about `length` but we have a few more functions that are designed to manipulate variables or test specific things about those variables. For example, we can use `class` to find the recognized type of any variable:
+
+```{r}
+class(numbers) 
+```
+
+And we can use `is.numeric` to ask if R recognize a variable as numeric
+
+```{r}
+is.numeric(numbers)
+```
+
+There are also `as.numeric` which will convert a given convertible variable to its numeric form. For example, let’s say we have:
+
+```{r}
+numbers_in_char_form <- c('100', '-100', '2.5')
+```
+
+Now we do recognize those as numerals but they are in R as charachters. We can see that in `class` 
+
+```{r}
+class(numbers_in_char_form)
+```
+
+which gives us character type -- meaning that we can’t really do any calculations on them. Have you ever divided your name by your hieght? How to tell R that those are actually numerals and possibly convert them to numbers? Using `as.numeric`
+
+```{r}
+as.numeric(numbers_in_char_form)
+```
+
+And now we have those numbers in a numeric form. We will need this later when we get to know different classes of variables.
+
+Similarly, we have `as.charachter()` and `is.charachter()` to do the same with charachter data.
+
+## Custom functions: seq, rep
+
+Now there are still some functions that we’ll use here and then. Take `seq`, short of sequence.
+
+```{r}
+seq(from=10, to=1000, by=2)
+```
+
+It clearly makes a list of numbers in a given range. We also have `rep`, short of repeat.
+
+```{r}
+rep(c(1,2,3), each=3)
+```
+
+Which repeats a given sequence a given number of times (hint: try `times=3` instead of `each=3` and see what happens).
+
+So now that we have learned about few functions you should ask: how do you know if a function actually exists? Nobody really knows but we use Google so you should. However, things are less painful if you use a common cheatsheets reference for you to know what functions are out there at your disposal (but you’ll google it anyway so why bother?). I personally use those cheatsheets just to assess how much I know about R’s core functions. You’ll probably need about 10% of those functions in the cheatsheets but you still want to be friends with them.
+
+# Jump from vectors to matrices
+
+A vector is just a set of numbers. In real life we deal with sets of numbers, usually called a table or a matrix. We’ll see in this section how we create a matrix, how to select specific elements in rows and columns 
+
+Let’s create a simple matrix:
+
+```{r}
+my_matrix  <- matrix(seq(from=1,to=20,by=1), nrow=5,ncol=4)
+```
+
+Which should create a matrix numbered from 1 to 20 with 5 rows and 4 columns. 
+
+```{r}
+my_matrix
+```
+
+Now that we have a matrix, what can we do with it? A matrix is simply a table of numbers. Let’s see some useful functions that help us handle a matrix (or any table). Meet `dim` which prints the dimensions of the matrix, or the number of rows followed by the number of columns.
+
+```{r}
+dim(my_matrix)
+```
+
+Now, `sum` will return the sum of the whole matrix
+
+```{r}
+sum(my_matrix)
+```
+
+To find the sum of rows or columns separately, we need to use special functions: `rowSums` which returns a list of the sum of each row, and `colSums` which does the same with columns.
+
+```{r}
+rowSums(my_matrix)
+```
+
+```{r}
+colSums(my_matrix)
+```
+
+## Row and Column Indexing
+
+Let’s now see how we can select specific rows and columns. To select a specific row, let’s say 3rd row, we simply need to type the position inside the bracket:
+
+```{r}
+my_matrix[3,]
+```
+
+And to select multiple rows, we can type those rows inside a `c()`
+
+```{r}
+my_matrix[c(1,3),]
+```
+
+Which will return the first and third row of the table. Let’s now select the 2nd and 4th column
+
+```{r}
+my_matrix[,c(2,4)]
+```
+
+The only thing that have changed is the position of index to be after the comma. So anything before the comma is to index the row, and anything after the comma is used to index the column.
+
+We can also use a logical index. For example, let’s select only the first two rows. First, we need to create an index (or a sequence) of all rows:
+
+```{r}
+row_index <- 1:5 # we can also use    seq(from=1, to=5, by=1)
+```
+
+Now, we want to retrieve the first two rows using logical indexing. To select the first 2 numbers:
+
+```{r}
+row_index < 3
+```
+
+And we can use that as our index:
+
+```{r}
+my_matrix[row_index < 3,]
+```
+
+Which will return the first two rows, because only the first two numbers evaluate True. 
+
+We can use logical indexing in filtering records from large tables and you'll definitly make use of it all the time.
+
+## Matrices to DataFrames
+
+Now let’s talk about actual data that you might find in the real-world. First of all, we can see that the matrix is already some kind of data, but it lacks labels and names. So let’s make that into a table with names using `data.frame`:
+
+```{r}
+df <- data.frame(my_matrix)
+df
+```
+
+Now, we see that our table has column headings and row numbers. To clean up things a little bit, we can use `names` function to change the column names into some fictional names (sorry real-world):
+
+```{r}
+names(df) <- c('age', 'sex', 'day', 'time')
+df
+```
+
+Which should improve things for us. Do you know why? Becasue we can now select columns by their names, instead of by their positions as we did in matrices. To select the first column (i.e., age), we used this before:
+
+```{r}
+df[,c(1)]
+```
+
+But now in the new world of data.frames, we can do this:
+
+```{r}
+df[,c('age')]
+```
+
+Or we can simply write the $ sign and then the column name:
+
+```{r}
+df$age
+```
+
+All those ways go to Rome. But we aren’t really going there, so I'll stick with the $ notation to select single columns. If we want to select multiple columns, then we can do either one of the first two options (by position or by name).
+
+We can use all the functions we learned about: `dim`, `nrow`, `ncol`, etc. We also have a few more functions to learn about. Let’s use fictional data:
+
+```{r}
+x <- data.frame(student_name=c('Roy','Tania','Sara'), 
+		  age=c(35, 23, 28),
+		  sex=c('m','f','f'))
+x
+```
+
+We can select age column and deal with it as a list of numbers:
+
+```{r}
+x$age
+```
+
+And this means we can filter rows based on age. For example, let’s use logical indexing for rows where age is bigger than 25:
+
+```{r}
+x$age > 25
+```
+
+And we can use that (with potentially any other conditions) to filter rows:
+
+```{r}
+x[x$age>25, ]
+```
+
+Let’s find the name of the students whose age is bigger than 25.
+
+```{r}
+x$student_name[x$age > 25]
+```
+
+Or we can simply type
+
+```{r}
+x[x$age > 25, 'student_name'] 
+```
+
+See how in the row section we used a filter and in the column (after the comma) we selected a specific column. We can also do:
+
+```{r}
+x[x$age > 25,]$student_name
+```
+
+All those are valid ways of filtering and selecting elements in our table.
+
+Now that we have explored this fake dataset, let’s see some real data.
+
+We’ll deal with a baby names datasets that tracks the popularity of individual baby names from the U.S. Social Security Administration To install the data, we’ll install a package and then use `library` command to add the data.
+
+```{r, eval=TRUE}
+install.packages('babynames')
+library(babynames)
+```
+
+We first want to look at the first few rows to see what we have:
+
+```{r}
+head(babynames)
+```
+
+We have 5 columns: year, sex, name, n (which I assume is the number of babies with that name at the given year and sex) and prop (i.e., proportion). 
+
+We can also look at the last few rows using `tail`
+
+```{r}
+tail(babynames)
+```
+
+## Selecting rows (also known as: filtering)
+
+Just like in matrices, we can filter rows in a dataframe using logical indexing. For example, let's filter only records of 2017:
+
+```{r}
+babynames [ babynames$year==2017 , ]
+```
+
+Which we can deal with as another table. We can simply ask how many records do we have by using `nrow` or `dim`:
+
+```{r}
+nrow(babynames [ babynames$year==2017 , ])
+```
+
+Let's make very simple plots with name frequencies across all years. We will use a function called `plot` which will require an x-axis and a y-axis. Both x and y should be a list of numbers. For example, we will plot the frequency of `Sarah` across all years
+
+```{r}
+result_sarah_n <- babynames$n[babynames$name=='Sarah' & babynames$sex == 'F']
+result_sarah_year <- babynames$year[babynames$name=='Sarah' & babynames$sex == 'F']
+```
+
+Now we are ready to use `plot`
+
+```{r}
+plot(result_sarah_year, result_sarah_n, type='l')
+```
+
+Did you like that simple plot? We'll do more plotting next lab and it won't be this ugly, but now let's master the basics.
+
+I want to know what are the top 5 names in the year 1989. How should we approach this? Here we will combine lots of what we have learned previously: `sort` with logical indexing. To know the most frequent name in 1972, we first need to filter data in 1972:
+
+```{r}
+data_subset <- babynames[babynames$year == 1989,]
+```
+
+Now, we'll sort the proportions with setting `decreasing=false` and select the first element (or we can use `max(data_subset)`)
+
+```{r}
+most_freq_n <- sort(data_subset$n, decreasing = TRUE)[1]
+most_freq_n
+```
+
+Now, we will look for the records whose `n` equals what we just got and print those records:
+
+```{r}
+data_subset[ data_subset$n == most_freq_n , ]
+```
+
+If you really want to read few good articles about this dataset, then here are few links:
+
+* [A couple of cool articles using this dataset](https://www.prooffreader.com/category/baby-names/)
+* [Kaggle also got few good explorations -- although some are in Python, you still want to be inspired on what analysis you can run. For example, what is the effect of US president on babynames? what about sport Athlets? etc](https://www.kaggle.com/kaggle/us-baby-names/kernels?sortBy=voteCount&group=everyone&pageSize=20&datasetId=13)
+* [Here is an interesting article on the most gender neutral names in the U.S.](http://www.randalolson.com/2014/12/06/top-25-most-gender-neutral-names-in-the-u-s/)
+
+We'll continue with this dataset later on -- hopefully after you skim through those links.
+
+# Exercise
+
+* Write a script that computes the mean of each column in a matrix (without using the function `mean`), and compare your result with `colMeans`.
+* Using the `babynames` dataset, do the following (and you are free to use any function now):
++ How many records (i.e., rows) we have for female baby names in 1950?
++ What is the most popular male name in 2010? What about the female name?
++ Extract the frequency of the name "Mohammed" across all years and then use `plot` function. What about other names? Just type as many names as you can until you see names that have interesting trends. When you see something interesting, just use it in your final solution and tell me why you think it is interesting (probaby in blackboard when you submit the assignment)
+

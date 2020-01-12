@@ -1,0 +1,393 @@
+---
+title: "Lab 4: Basics of dplyr and ggplot, again"
+author: "Fahd Alhazmi"
+output:
+  html_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+# What is EDA
+
+In this class we’ll focus on the Exploratory Data Analysis (EDA). In short, it refers to what we have been doing so far: data transformation and data visualization. We are going to dive deeper into those two but in a more coherent framework so that you become as comfortable as possible with data exploration in R. Nothing fundamentally new in this lab -- we’ll only dive deeper into using the tools we already know.
+
+You should think of the goal of exploratory data analysis as the following: you want to explore as many aspects as possible in your data so that you gain a better understanding of what is already there. The way you go about this is by so many iterations of questions -> visualizations to answer those questions.
+
+# ggplo2: one more time
+
+First, let’s revisit some basics of ggplot2 library. We’ll use a new dataset called `mpg`. The dataset comes from the US Enviromental Protection Agency which collected a couple of models along with the following features for each model: manufacturer, model, year, engine size in liters, transmission type along with other variables.
+
+```{r}
+library(ggplot2)
+```
+
+You can read more about the dataset by typing this command in the console:
+
+```{r, eval=FALSE}
+?mpg
+```
+
+Let's look at the first few lines:
+
+```{r}
+mpg
+```
+
+We can asl a very simple question about fuel efficiency: what is the relationship between car engine size (i.e., `displ`) and fuel consumption (i.e., `hwy`)? We can simply answer this question using the two variables: displ (which codes for engine size in liters) and hwy (which codes for fuel efficiancy in miles per gallon in highways). As both variables are continous numbers, we can use a scatter plot:
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy)) + 
+  geom_point()
+```
+
+As you see, we see a negative relationship between engine size and fuel efficincy. Now we can cliam that we are done with the first iteration of Q->V routine. We’ll do that throughout this lesson.
+
+## plotting 3 variables
+
+In ggplot2, we have a lot more options we’ll explore in this short tutorial. Let’s vary the points in the scatter plots by a third variable. For example, we can color those cars using the class of the car:
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, color=class)) + 
+  geom_point()
+```
+
+All what we did was adding ``color=class`` inside the `aes` command in the plotting command. We can also use `shape` as well
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, shape=class)) + 
+  geom_point()
+```
+
+If the third variable was continous (made of numbers), then we can use other options including size (which does not make much sense if your third variable is categorical):
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, size=class)) + 
+  geom_point()
+```
+
+or alpha:
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, alpha=class)) + 
+  geom_point()
+```
+
+## faceting
+
+Another feature of ggplot is called faceting. It is the splitting of a plot into many subplots by a given thrid variable. For example, we can plot the same relationship but by making a small subplot for each class using the function `facet_wrap`:
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, color=class)) + 
+  geom_point() + 
+  facet_wrap(~class, nrow=2)
+```
+
+And now we can see the relationship clearer. You can also use a combination of two variables by writing the varialbes around the telda ~ symbol
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy)) + 
+  geom_point() + 
+  facet_wrap(cyl~class)
+```
+
+## geoms
+
+Geoms are geometrical objects in ggplot. We can use a lot of those shapes when plotting. For example, we already seen “geom_point” Let’s try “geom_smooth”
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy)) + 
+  geom_point() + 
+  geom_smooth(method='lm')
+```
+
+Which will draw a smooth line that run across all the points, overlayed over the scatter plot. To make separate lines per a third variable, we’ll need to provide that third variable inside an aes funciton
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy, color=class)) + 
+  geom_point() + 
+  geom_smooth(method='lm', se=FALSE)
+```
+
+Note the relationship between aes and the lines: If we specify the aes at the base layer (i.e., inside ggplot()), then it will be applied to all the following layers. In the plot above, we specified `color=class` inside ggplot() and this will be inhereted by all the following layers. However, if we want to specify aesthetics for a certain layer, then we'll need to define those inside that layer.
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy)) +
+  geom_point(aes(color=class)) + 
+  geom_smooth(method='lm', se=FALSE)
+```
+
+Also note that anything is defined outside aes will apply a static value to all the geoms. For example, we want to have the fit line in black. We can simply write `color='black'` inside the geom_smooth but not inside an aes function:
+
+```{r}
+ggplot(mpg, aes(x=displ, y=hwy)) + 
+  geom_point(aes(color=class)) + 
+  geom_smooth(method='lm', se=FALSE, color='black')
+```
+
+Let’s add this smooth line over the points:
+
+Let’s now explore “geom_boxplot” 
+
+```{r}
+ggplot(mpg, aes(x=class, y=hwy)) + 
+  geom_boxplot()
+```
+
+We can also use “coord_flip()” to make this graph more readible
+
+```{r}
+ggplot(mpg, aes(x=class, y=hwy)) + 
+  geom_boxplot() + 
+  coord_flip()
+```
+
+
+
+# dplyr one more time
+
+Now that we have explored some basics, let’s discuss data transformation and wrangling using dplyr. This is probably the last time we’re going to introduce those concepts. In the future labs, we’ll just go ahead and apply those concepts to understand statistics.
+
+We’ll use a unique dataset called nycflights. First, you want to install the package:
+```{r, eval=FALSE}
+install.packages('nycflights13')
+```
+
+Then we'll load both packages inside our envirnment
+
+```{r}
+library(dplyr)
+library(nycflights13)
+```
+
+You can read a bit more about the dataset by typing
+
+```{r, eval=FALSE}
+?flights
+```
+
+The dataset contains about 337K flights departing from New York City (JFK, LGA and EWR) in 2013. Each row contains: year, month, day, departure time, scheled departure time, departure delay, arrival time along with other variables.
+
+Let’s revisit the basic verbs in dplyr:
+
+* To filter rows from dataset we use `filter()`
+* To select columns we use `select()`
+* To arrange the rows we use `arrange()` either in ascending or descending order
+* To modify existing columns or create new columns we use `mutate()`
+* To compute summaries by a given variable we use `group_by()` followed by `summarize()`
+
+## filter
+
+Lets begin by selecting flights on 4th of July:
+
+```{r}
+flights %>% 
+  filter(day==4 & month==7)
+```
+
+Or select flights in July, October and December:
+
+```{r}
+flights %>% 
+  filter(month %in% c(7, 10, 12))
+```
+
+Let’s also use multiple logical operators: we can select flights that have not been delayed by mre than 2 hours:
+
+```{r}
+flights %>% 
+  filter(arr_delay<120 & dep_delay<120)
+```
+
+We can also say
+
+```{r}
+flights %>% 
+  filter( !(arr_delay>120 & dep_delay>120)  )
+```
+
+# arrange
+
+With arrange, we can sort the rows in either an ascending order (default) or a descending order.
+
+For example, let’s find the most delayed flight in 2013 -- note the way I use `desc` to get the descending order:
+
+```{r}
+flights %>% arrange(desc(dep_delay)) %>% head(5)
+```
+
+So the top flight was delayed by 1301 minutes (or ~22 hours).
+
+# select
+
+Imagine we have a dataset with so many columns (think of hundreds -- which is very possible in real-life datasets). `select` is the best way to zoom in specific columns and ignore the rest. Let's for example select only the year, month and day:
+
+```{r}
+flights %>% select(year, month, day)
+```
+
+We can also use a range. Remember, 1:3 will make a list from 1 to 3 (inclusive). with year:day, it will select all columns between year and day inclusive:
+
+```{r}
+flights %>% select(year:day) #
+```
+
+We can also use the minus sign to indicate execlusions: select all columns except for those specificed columns:
+
+```{r}
+flights %>% select(-(year:day))
+```
+
+You might not be happy about a given column name. You can use `rename` to rename that column: new name = old name.
+
+```{r}
+flights %>% rename(tail_num = tailnum)
+```
+
+Finally, we can use `everything` inside select: we want time_hour and air_time to be shown first and then show the remaining columns as is:
+
+```{r}
+flights %>% select(time_hour, air_time, everything())
+```
+
+## mutate
+
+In mutate, we can modify or add new variables based on current variables. For example, we will add two new variables here: the flight departure time but in hours and minutes:
+
+```{r}
+flights %>%
+	mutate(hour    = dep_time %/% 100, 
+	       minutes = dep_time %% 100) %>%
+  select(dep_time, hour, minutes)
+```
+
+## summarize
+
+In summarize, we compute any summary number from a set of measurements. Summarize will always collapse many rows into a single value. You alomst always want to use summarize paired with group_by so that you can print summary statistics for each group. For example, let's print the average of delays (in minutes) for each day in the year
+
+```{r}
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarise(delay = mean(dep_delay, na.rm = TRUE))
+```
+
+We can also explore the relationship between delay time and the average distance in the air. Do longer flights have more delays than shorter ones? Lets make a scatter plot as well.
+
+```{r}
+delays <- flights %>% 
+  group_by(dest) %>% 
+  summarise(
+    count = n(),
+    dist = mean(distance, na.rm = TRUE),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  filter(count > 20, dest != "HNL")
+
+ggplot(data = delays, mapping = aes(x = dist, y = delay)) +
+  geom_point(aes(size = count), alpha = 1/3) +
+  geom_smooth(se = FALSE)
+```
+
+Let’s deal with only non cancelled flights and print the average delay again:
+
+```{r}
+not_cancelled <- flights %>% 
+  filter(!is.na(dep_delay) & !is.na(arr_delay))
+
+not_cancelled %>% 
+  group_by(year, month, day) %>% 
+  summarise(mean = mean(dep_delay))
+```
+
+## counts
+
+A good practice is to use counts whenever you do a summarization so you know we are not dealing with small data. 
+
+Let’s explore the number of flights vs average delay.
+ 
+```{r}
+delays <- not_cancelled %>% 
+  group_by(tailnum) %>% 
+  summarise(
+    delay = mean(arr_delay, na.rm = TRUE),
+    n = n()
+  )
+ 
+ggplot(data = delays, mapping = aes(x = n, y = delay)) + 
+  geom_point(alpha = 1/10)
+```
+
+Which shows that little flights => more variation. As the number of flights increases, we have more tight variaiton. We can filter out the flights with small n
+
+```{r}
+delays %>% 
+  filter(n > 25)
+ggplot(delays, aes(x = n, y = delay)) + 
+    geom_point(alpha = 1/10)
+```
+
+## Misc.
+
+We can use subsetting inside summarize. As arr_delay have negative numbers (for flights that arrived earlier than scheduled), it may be better if we only select the positive values to reflect the truly delayed flights.
+
+```{r}
+not_cancelled %>% 
+  group_by(year, month, day) %>% 
+  summarise(
+    avg_delay1 = mean(arr_delay),
+    avg_delay2 = mean(arr_delay[arr_delay > 0]) # the average positive delay
+  )
+```
+
+Why is distance to some destinations more variable than to others? (This question is for you to think about)
+
+```{r}
+not_cancelled %>% 
+  group_by(dest) %>% 
+  summarise(distance_sd = sd(distance), count=n()) %>% 
+  arrange(desc(distance_sd))
+```
+
+Which destinations have the most carriers?
+
+```{r}
+not_cancelled %>% 
+  group_by(dest) %>% 
+  summarise(carriers = n_distinct(carrier)) %>% 
+  arrange(desc(carriers))
+```
+
+How many flights in each distination ? Let's make a descending order list.
+
+```{r}
+not_cancelled %>% 
+  count(dest) %>%
+  arrange(desc(n))
+```
+
+What proportion of flights are delayed by more than an hour, on a daily basis?
+
+```{r}
+not_cancelled %>% 
+  group_by(year, month, day) %>% 
+  summarise(hour_perc = mean(arr_delay > 60))
+```
+
+
+# Exercises
+
+Find all flights that:
+
+* Had an arrival delay of two or more hours
+* Flew to Dallas (DAL or DFW)
+* Were operated by United (UA), American (AA), or Delta (DL) (check this page for all the codes: https://aspmhelp.faa.gov/index.php/ASQP:_Carrier_Codes_and_Names)
+* Departed in summer (July, August, and September)
+* Arrived more than two hours late, but didn’t leave late
+* Were delayed by at least an hour, but arrival delay is less than 30 minutes.
+* Departed before 6am (remember to check the time)
+
+
+
+Is there a relationship between proportion of cancelled flights and the average delays? Remember that a missing `dep_delay` or `arr_delay` (i.e., `is.na()` is TRUE) represents a cancelled flight. Make a scatter plot that have the proportion of cancelled flights on the x-axis, and the average delay on the y-axis. Group the observations by month. Also make sure you plot straight line using `geom_smooth(method='lm')`.

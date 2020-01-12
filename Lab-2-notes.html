@@ -13,7 +13,7 @@
 <meta name="author" content="Fahd Alhazmi" />
 
 
-<title>Lab 1: Basics of R</title>
+<title>Lab 2: Basics of R, again</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -362,254 +362,382 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Lab 1: Basics of R</h1>
+<h1 class="title toc-ignore">Lab 2: Basics of R, again</h1>
 <h4 class="author">Fahd Alhazmi</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#r-installation">R Installation</a></li>
-<li><a href="#basic-commands">Basic commands</a></li>
-<li><a href="#vectors-and-indexing">Vectors and indexing</a></li>
-<li><a href="#logical-operations-and-indexing">Logical operations and indexing</a></li>
-<li><a href="#control-statements">Control Statements</a></li>
-<li><a href="#functions">Functions</a></li>
-<li><a href="#exercises">Exercises</a></li>
+<li><a href="#core-functions-you-need-to-know-and-probably-share-with-5-of-your-friends">Core functions you need to know and probably share with 5 of your friends</a><ul>
+<li><a href="#housekeeping-install.packages-library-getwd-setwd">Housekeeping: install.packages(), library(), getwd(), setwd()</a></li>
+<li><a href="#statistical-functions-mean-median-sum-var-sd-max-min-table-sort-unique">Statistical functions: mean, median, sum, var, sd, max, min, table, sort, unique</a></li>
+<li><a href="#variable-information-functions-length-class-is.numeric-as.numeric-is.character-as.charachter">Variable Information functions: length, class, is.numeric, as.numeric, is.character, as.charachter</a></li>
+<li><a href="#custom-functions-seq-rep">Custom functions: seq, rep</a></li>
+</ul></li>
+<li><a href="#jump-from-vectors-to-matrices">Jump from vectors to matrices</a><ul>
+<li><a href="#row-and-column-indexing">Row and Column Indexing</a></li>
+<li><a href="#matrices-to-dataframes">Matrices to DataFrames</a></li>
+<li><a href="#selecting-rows-also-known-as-filtering">Selecting rows (also known as: filtering)</a></li>
+</ul></li>
+<li><a href="#exercise">Exercise</a></li>
 </ul>
 </div>
 
-<div id="r-installation" class="section level1">
-<h1>R Installation</h1>
-<p>The R programming language is a widely-used open source language used mainly for statistical analysis. R is not only used in academia but also in industry at big companies like Google, Facebook and many others. The skills you will learn from this course will not only help your studies but will, hopefully, help you get a decent job!</p>
-<p>First step to use R is to download it from the <a href="https://www.r-project.org/">R project home page</a> and then install it in your computer.</p>
-<p>We will also be using RStudio which is an integrated development environment (IDE) for R. So you also need to download it from <a href="https://www.rstudio.com/products/rstudio/download/">RStudio website</a> and install it.</p>
-<p>And now we are ready to dive in.</p>
+<div id="core-functions-you-need-to-know-and-probably-share-with-5-of-your-friends" class="section level1">
+<h1>Core functions you need to know and probably share with 5 of your friends</h1>
+<p>Let’s talk more about functions. Most of what you’ll do in R will be learning how to use functions. You’ll rarely need to write things up from scratch. Let’s see some common functions that we’ll use here and then.</p>
+<div id="housekeeping-install.packages-library-getwd-setwd" class="section level2">
+<h2>Housekeeping: install.packages(), library(), getwd(), setwd()</h2>
+<p>In R, we often deal with packages (or sets of functions that others wrote to make our lives easier). To use those packages, we first need to install those packages into our computers. To do this, we will use install.packages(x) where x is the name of the package. Let’s say we want to install a package called “babynames”. We can simply type:</p>
+<pre class="r"><code>install.packages(&quot;babynames&quot;)</code></pre>
+<p>And you’ll soon see some colored output from R telling you how things are going.</p>
+<p>Now that we have installed the package into our computer, we need to import it to R and start using it. We can use <code>library</code> to do this.</p>
+<pre class="r"><code>library(&quot;babynames&quot;)</code></pre>
+<p>This command will make the functions (or data) in this package available for us to use.</p>
+<p>Handing working directories in R can be tricky but let’s prepare for the worst and hope for the best. In R, there is this notion of “working directory” and it is the address in your file system that R is running at. Later, we’ll need to read files and write files and hence we’ll need to handle file system properly. To do those we’ll first need to know where we are so that we can point to the right file. I can’t give you directions to the Empire State if I don’t know what is your starting point.</p>
+<p>We we’ll use <code>getwd()</code> to “get the working directory” which R recognizes. Files in this working directory can be read easily by using their names. For example, let’s say I want to read a table called <code>names.csv</code> (this following code will not run and it just for illustration):</p>
+<pre class="r"><code>data &lt;- read.csv('names.csv')</code></pre>
+<p>It will only work if there exists a table called names.csv in the current working directory. How to get that? Here we use</p>
+<pre class="r"><code>getwd()</code></pre>
+<p>More often, we want to change that working directory. Let’s say that the table names.csv is in another sub-sub-sub-sub-sub-sub directory. In this case, you will need to read the table using the full path of the file:</p>
+<pre class="r"><code>data&lt;- read.csv('folder/subfolder/subsubfolder/subsubsubfolder/names.csv')</code></pre>
+<p>That’s because R is looking at Franklin Ave station and you are referring to a building at 34th Station. To teleport from a directory to another, we can use setwd() and change the working directory:</p>
+<pre class="r"><code>setwd('folder/subfolder/subsubfolder/subsubsubfolder')</code></pre>
+<p>This will make the subsubsubfolder our new working directory and now we can simply call the file <code>names.csv</code> without using any folders before the name.</p>
+<p>This is very important as we dive deeper to read and write data. For now, however, you can just move on.</p>
 </div>
-<div id="basic-commands" class="section level1">
-<h1>Basic commands</h1>
-<p>The assignment operator can be used to store values arbitrary variable names:</p>
-<pre class="r"><code>x &lt;- 1</code></pre>
-<p>This stores the value of 1 into a variable called X. Now whenever we type X, R knows that X has a value of 1. We can also use a command called print to print a given number. For example</p>
-<pre class="r"><code>print('hello world') </code></pre>
-<pre><code>## [1] &quot;hello world&quot;</code></pre>
-<p>Should print “hello world”.</p>
-<p>You can also use R as a calculator and you can use all math operations: +, -, /, * and ^. For example:</p>
-<pre class="r"><code>1+1</code></pre>
-<pre><code>## [1] 2</code></pre>
-<p>Should return 2</p>
-<p>Now let’s do calculations using variables:</p>
-<pre class="r"><code>earned&lt;-100
-spent&lt;-50
-profit &lt;- earned-spent
-print(profit)</code></pre>
-<pre><code>## [1] 50</code></pre>
-<p>And if you multiply by 365 to get the annual profit:</p>
-<pre class="r"><code>Annual_profit &lt;- profit * 365</code></pre>
-<p>Remember to always use informative variable names that does not contain spaces.</p>
+<div id="statistical-functions-mean-median-sum-var-sd-max-min-table-sort-unique" class="section level2">
+<h2>Statistical functions: mean, median, sum, var, sd, max, min, table, sort, unique</h2>
+<p>R is statistical language and it has tons of functions doing all sorts of statistics. Let’s discuss a few functions and explore the rest as we progress in this course. Those functions usually require a set of numbers as inputs. Let’s define a set of numbers as we did last time (we called it a vector):</p>
+<pre class="r"><code>numbers &lt;- c(4,3,6,6,3,3,5,3,2,7,3,5,6,3,2,1,5,6,2,12,3,4,5,5)</code></pre>
+<p>Calculate the sum of those numbers:</p>
+<pre class="r"><code>sum(numbers)</code></pre>
+<pre><code>## [1] 104</code></pre>
+<p>Calculate the length of this list of numbers:</p>
+<pre class="r"><code>length(numbers)</code></pre>
+<pre><code>## [1] 24</code></pre>
+<p>We can calculate the mean of those numbers by dividing the sum over the length:</p>
+<pre class="r"><code>sum(numbers) / length(numbers)</code></pre>
+<pre><code>## [1] 4.333333</code></pre>
+<p>Or we can simply use <code>mean</code></p>
+<pre class="r"><code>mean(numbers)</code></pre>
+<pre><code>## [1] 4.333333</code></pre>
+<p>We can also find the median</p>
+<pre class="r"><code>median(numbers)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>Or the variance of those numbers</p>
+<pre class="r"><code>var(numbers)</code></pre>
+<pre><code>## [1] 5.188406</code></pre>
+<p>And from the variance, we can find the standard deviation using another function: the square root</p>
+<pre class="r"><code>sqrt(var(numbers)) </code></pre>
+<pre><code>## [1] 2.277807</code></pre>
+<p>Or we can use <code>sd</code></p>
+<pre class="r"><code>sd(numbers)</code></pre>
+<pre><code>## [1] 2.277807</code></pre>
+<p>We can also use sort to sort those numbers from lowest to highest:</p>
+<pre class="r"><code>sort(numbers)</code></pre>
+<pre><code>##  [1]  1  2  2  2  3  3  3  3  3  3  3  4  4  5  5  5  5  5  6  6  6  6  7
+## [24] 12</code></pre>
+<p>or from the hieghest to lowest by changing the value of <code>decreasing</code> input:</p>
+<pre class="r"><code>sort(numbers, decreasing=TRUE)</code></pre>
+<pre><code>##  [1] 12  7  6  6  6  6  5  5  5  5  5  4  4  3  3  3  3  3  3  3  2  2  2
+## [24]  1</code></pre>
+<p>Remember, sort returns another vector that we can easily play with. For example, we can use the result of sort to find the minimum number in the list by selecting the first element after the sorting:</p>
+<pre class="r"><code>sort(numbers)[1]</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Or the maximum number</p>
+<pre class="r"><code>sort(numbers, decreasing=TRUE)[1]</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Notice that we can use <code>length(numbers)</code> instead of <code>1</code> to index the location of the last element in a vector.</p>
+<p>We can instead use <code>max</code> and <code>min</code> functions to get the same results:</p>
+<pre class="r"><code>max(numbers)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>min(numbers) </code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Let’s see one more function: <code>unique</code> which returns a list of unique elements in a given set of numbers. We make use of this function all the time.</p>
+<pre class="r"><code>numbers &lt;- c(1,1,1,2,2,2,3,3,3,4,4,4)
+unique(numbers)</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<p>Now, I am going to give you a function and ask you to guess what this function is doing!</p>
+<pre class="r"><code>table(numbers)</code></pre>
+<pre><code>## numbers
+## 1 2 3 4 
+## 3 3 3 3</code></pre>
+<p>Do you have any ideas? Well, how do we know what functions do and where to read help? We can type a question mark before the name of the function which will give us a readable explanation of what that function is doing with examples and free donuts.</p>
+<pre class="r"><code>?table</code></pre>
 </div>
-<div id="vectors-and-indexing" class="section level1">
-<h1>Vectors and indexing</h1>
-<p>We can also store a list of numbers (called vector):</p>
-<pre class="r"><code>X&lt;- c(1,2,3)</code></pre>
-<p>The c(..) is always used to concatenate a list of things. They can be anything you want as long as R understands it. Lets make a variable for profit per weekday:</p>
-<pre class="r"><code>profit_by_day &lt;- c(29,40,30,10,2,40)</code></pre>
-<p>We can access any element in that list by simply typing the address or the index of that numbre. For example, to pull the first number we can type:</p>
-<pre class="r"><code>profit_by_day[1] </code></pre>
-<pre><code>## [1] 29</code></pre>
-<p>And to pull the first 3 numbers by using :</p>
-<pre class="r"><code>profit_by_day[1:3]</code></pre>
-<pre><code>## [1] 29 40 30</code></pre>
-<p>Note that 1:3 will simply make a list 1,2,3. It is identical to c(1,2,3) but will come to that later. We can also edit any given element.</p>
-<pre class="r"><code>profit_by_day[1] &lt;- 100</code></pre>
-<p>We can use <code>length</code> function to print the size of the vector</p>
-<pre class="r"><code>length(profit_by_day)</code></pre>
-<pre><code>## [1] 6</code></pre>
-<p>We can perform operations on vectors:</p>
-<pre class="r"><code>profit_by_day * 100 </code></pre>
-<pre><code>## [1] 10000  4000  3000  1000   200  4000</code></pre>
-<p>We can finally extract specific elements from vectors:</p>
-<pre class="r"><code>profit_by_day[6]</code></pre>
-<pre><code>## [1] 40</code></pre>
-<p>Or</p>
-<pre class="r"><code>profit_by_day[c(1,4,6)] </code></pre>
-<pre><code>## [1] 100  10  40</code></pre>
-<p>to extract the numbers corresponding to the 1st, 4th and 6th day.</p>
-</div>
-<div id="logical-operations-and-indexing" class="section level1">
-<h1>Logical operations and indexing</h1>
-<p>Variables can store logical values instead of numbers. Logical values are TRUE and FALSE. R deal with those values as logical value and not as text. For example, we an assess the truth of any expression and R will tell us right away. Those are the logical operators used in R: &lt;, &gt;, ==, &lt;=, &gt;=, !=</p>
-<p>Is 1+1 equals to 2 or 1?</p>
-<pre class="r"><code>1+1 == 2 </code></pre>
+<div id="variable-information-functions-length-class-is.numeric-as.numeric-is.character-as.charachter" class="section level2">
+<h2>Variable Information functions: length, class, is.numeric, as.numeric, is.character, as.charachter</h2>
+<p>We have already talked about <code>length</code> but we have a few more functions that are designed to manipulate variables or test specific things about those variables. For example, we can use <code>class</code> to find the recognized type of any variable:</p>
+<pre class="r"><code>class(numbers) </code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>And we can use <code>is.numeric</code> to ask if R recognize a variable as numeric</p>
+<pre class="r"><code>is.numeric(numbers)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>1+1 == 1</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<p>You can also evaluate multiple logical operators using: ! (not) , | (or) , &amp; (and). Here are few examples:</p>
-<pre class="r"><code>1==1</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>!(1==1)</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>(1==1) | (1==5)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>(1==1) &amp; (2==5)</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<p>We always use logical operations when dealing with vectors. For example, we can ask what values in profit_by_day are greater than 40 by</p>
-<pre class="r"><code>profit_by_day &lt;- c(29,40,30,10,2,40)
-profit_by_day &gt; 20</code></pre>
-<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
-<p>Now we turn to indexing: we can use logical operator to select elements in the vectors according to some condition(s):</p>
-<pre class="r"><code>profit_by_day[profit_by_day &gt; 20]</code></pre>
-<pre><code>## [1] 29 40 30 40</code></pre>
-<p>Or if we have a separate vector for days:</p>
-<pre class="r"><code>days &lt;- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-days[profit_by_day&gt;20]</code></pre>
-<pre><code>## [1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
-<p>Should print the days where profit exceeds 40. We can use multiple logical operators as well:</p>
-<pre class="r"><code>sunny &lt;- c('yes','yes','no','yes','no','no','no')</code></pre>
-<p>And then select the days where profit exceeds 40 AND sunny is ‘yes’</p>
-<pre class="r"><code>days[profit_by_day&gt;20  &amp;  sunny=='yes']</code></pre>
-<pre><code>## [1] &quot;Monday&quot;  &quot;Tuesday&quot;</code></pre>
-<p>Another example:</p>
-<pre class="r"><code>days[profit_by_day&gt;40 | sunny!='yes']</code></pre>
-<pre><code>## [1] &quot;Wednesday&quot; &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;</code></pre>
+<p>There are also <code>as.numeric</code> which will convert a given convertible variable to its numeric form. For example, let’s say we have:</p>
+<pre class="r"><code>numbers_in_char_form &lt;- c('100', '-100', '2.5')</code></pre>
+<p>Now we do recognize those as numerals but they are in R as charachters. We can see that in <code>class</code></p>
+<pre class="r"><code>class(numbers_in_char_form)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>which gives us character type – meaning that we can’t really do any calculations on them. Have you ever divided your name by your hieght? How to tell R that those are actually numerals and possibly convert them to numbers? Using <code>as.numeric</code></p>
+<pre class="r"><code>as.numeric(numbers_in_char_form)</code></pre>
+<pre><code>## [1]  100.0 -100.0    2.5</code></pre>
+<p>And now we have those numbers in a numeric form. We will need this later when we get to know different classes of variables.</p>
+<p>Similarly, we have <code>as.charachter()</code> and <code>is.charachter()</code> to do the same with charachter data.</p>
 </div>
-<div id="control-statements" class="section level1">
-<h1>Control Statements</h1>
-<p>Naturally, R evaluates each line by order. However, we can use some tools that can control this behavior and, say, skip few lines or execute a specific command only if some condition is met. There are three kinds of control statements: while, for and if.</p>
-<pre class="r"><code>while (  condition )  {
-  # DO THINGS HERE IF condition IS TRUE
-}</code></pre>
-<p>Let’s look at an example. Let’s say we want to add numbers to a variable called x, but if x is greater than 10, say, the loop should stop. In R, we can write:</p>
-<pre class="r"><code>x&lt;-0
-while(x&lt; 10) {
-  x&lt;-x+1
-}
-print(x)</code></pre>
-<pre><code>## [1] 10</code></pre>
-<p>We can move print(x) inside the loop to see exactly when it stops.</p>
-<pre class="r"><code>x &lt;- 0
-while(x&lt;10){
-  x&lt;-x+1
-  print(x)
-}</code></pre>
-<pre><code>## [1] 1
-## [1] 2
-## [1] 3
-## [1] 4
-## [1] 5
-## [1] 6
-## [1] 7
-## [1] 8
-## [1] 9
-## [1] 10</code></pre>
-<p>The syntax of the for-loop is as follows:</p>
-<pre class="r"><code>for (VAR in VECTOR) {
-  ## DO THINGS HERE POSSIBLY WITH VAR
-}</code></pre>
-<p>VAR in VECTOR simply means that elements of the vector will be assigned to the variable. If we do: <code>x in 1:10</code>, then, x will first be assigned a value of 1, and in the next iteration it will be the next value in 1:10 which is 2 and etc.</p>
-<pre class="r"><code>for (x in 1:10){
-  print(x)
-}</code></pre>
-<pre><code>## [1] 1
-## [1] 2
-## [1] 3
-## [1] 4
-## [1] 5
-## [1] 6
-## [1] 7
-## [1] 8
-## [1] 9
-## [1] 10</code></pre>
-<p>However, we can also iterate over any vector of elements and not necessarily numbers. Let’s use this to calculate the balance after a monthly compund interest rate of 2%</p>
-<pre class="r"><code>balance &lt;- 1000
-for (month in 1:12){
-  newbalance &lt;- balance * 0.02
-  balance &lt;- balance + newbalance
-}
-print(balance)</code></pre>
-<pre><code>## [1] 1268.242</code></pre>
-<p>We can also combine those control statements. For example, let’s calculate the number of odd numbers between 100 and 500, which are divisible by 3</p>
-<pre class="r"><code>x &lt;- 0
-for (i in 100:500){
-  Odd &lt;- i %% 2 &gt; 0 
-  DivisbleBy3 &lt;-  i %% 3 == 0   
-  if (Odd &amp; DivisbleBy3) {
-    x &lt;- x+1
-  }
-}</code></pre>
-<p>We can also use <code>break</code> inside for loop to break the loop and stop immediately – it will not execute any code below break and will not go into any more iterations. For example, the following code is supposed to print all numbers from 1 to 5. However, we added an IF statement at x == 3, which, if true, will break the for-loop.</p>
-<pre class="r"><code>x &lt;- 1:5
-for (value in x){
-  if (value==3) {
-    break
-    }
-  print(value)
-}</code></pre>
-<pre><code>## [1] 1
-## [1] 2</code></pre>
+<div id="custom-functions-seq-rep" class="section level2">
+<h2>Custom functions: seq, rep</h2>
+<p>Now there are still some functions that we’ll use here and then. Take <code>seq</code>, short of sequence.</p>
+<pre class="r"><code>seq(from=10, to=1000, by=2)</code></pre>
+<pre><code>##   [1]   10   12   14   16   18   20   22   24   26   28   30   32   34   36
+##  [15]   38   40   42   44   46   48   50   52   54   56   58   60   62   64
+##  [29]   66   68   70   72   74   76   78   80   82   84   86   88   90   92
+##  [43]   94   96   98  100  102  104  106  108  110  112  114  116  118  120
+##  [57]  122  124  126  128  130  132  134  136  138  140  142  144  146  148
+##  [71]  150  152  154  156  158  160  162  164  166  168  170  172  174  176
+##  [85]  178  180  182  184  186  188  190  192  194  196  198  200  202  204
+##  [99]  206  208  210  212  214  216  218  220  222  224  226  228  230  232
+## [113]  234  236  238  240  242  244  246  248  250  252  254  256  258  260
+## [127]  262  264  266  268  270  272  274  276  278  280  282  284  286  288
+## [141]  290  292  294  296  298  300  302  304  306  308  310  312  314  316
+## [155]  318  320  322  324  326  328  330  332  334  336  338  340  342  344
+## [169]  346  348  350  352  354  356  358  360  362  364  366  368  370  372
+## [183]  374  376  378  380  382  384  386  388  390  392  394  396  398  400
+## [197]  402  404  406  408  410  412  414  416  418  420  422  424  426  428
+## [211]  430  432  434  436  438  440  442  444  446  448  450  452  454  456
+## [225]  458  460  462  464  466  468  470  472  474  476  478  480  482  484
+## [239]  486  488  490  492  494  496  498  500  502  504  506  508  510  512
+## [253]  514  516  518  520  522  524  526  528  530  532  534  536  538  540
+## [267]  542  544  546  548  550  552  554  556  558  560  562  564  566  568
+## [281]  570  572  574  576  578  580  582  584  586  588  590  592  594  596
+## [295]  598  600  602  604  606  608  610  612  614  616  618  620  622  624
+## [309]  626  628  630  632  634  636  638  640  642  644  646  648  650  652
+## [323]  654  656  658  660  662  664  666  668  670  672  674  676  678  680
+## [337]  682  684  686  688  690  692  694  696  698  700  702  704  706  708
+## [351]  710  712  714  716  718  720  722  724  726  728  730  732  734  736
+## [365]  738  740  742  744  746  748  750  752  754  756  758  760  762  764
+## [379]  766  768  770  772  774  776  778  780  782  784  786  788  790  792
+## [393]  794  796  798  800  802  804  806  808  810  812  814  816  818  820
+## [407]  822  824  826  828  830  832  834  836  838  840  842  844  846  848
+## [421]  850  852  854  856  858  860  862  864  866  868  870  872  874  876
+## [435]  878  880  882  884  886  888  890  892  894  896  898  900  902  904
+## [449]  906  908  910  912  914  916  918  920  922  924  926  928  930  932
+## [463]  934  936  938  940  942  944  946  948  950  952  954  956  958  960
+## [477]  962  964  966  968  970  972  974  976  978  980  982  984  986  988
+## [491]  990  992  994  996  998 1000</code></pre>
+<p>It clearly makes a list of numbers in a given range. We also have <code>rep</code>, short of repeat.</p>
+<pre class="r"><code>rep(c(1,2,3), each=3)</code></pre>
+<pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
+<p>Which repeats a given sequence a given number of times (hint: try <code>times=3</code> instead of <code>each=3</code> and see what happens).</p>
+<p>So now that we have learned about few functions you should ask: how do you know if a function actually exists? Nobody really knows but we use Google so you should. However, things are less painful if you use a common cheatsheets reference for you to know what functions are out there at your disposal (but you’ll google it anyway so why bother?). I personally use those cheatsheets just to assess how much I know about R’s core functions. You’ll probably need about 10% of those functions in the cheatsheets but you still want to be friends with them.</p>
 </div>
-<div id="functions" class="section level1">
-<h1>Functions</h1>
-<p>Now let’s talk about functions. Functions in R are custom commands that execute a given script and at the end give us an output. For example, sqrt is a function in R that calculates the square root of a given number.</p>
-<pre class="r"><code>sqrt(25)</code></pre>
-<pre><code>## [1] 5</code></pre>
-<p>We can confirm</p>
-<pre class="r"><code>sqrt(25) == 25 ^ 0.5</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<p>However, functions usually have <code>arguments</code> or inputs that we want to use. Let’s consider the function <code>round</code></p>
-<pre class="r"><code>round(3.12345)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<p>But we can also use a second arguments that says how many decimals we want to keep. If we use 2 then we will keep only 2 decimals.</p>
-<pre class="r"><code>x&lt;- 3.2563254
-round(x) </code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>round(x, digits = 2)</code></pre>
-<pre><code>## [1] 3.26</code></pre>
-<p>We can actually convert our script that count the number of odds between 100 and 500 to a function so that we can use it repeatedly and share it with others. The only thing is a special command at the end called return, to make any value accessible outside the function.</p>
-<pre class="r"><code>count_odds &lt;- function() {
-  x &lt;- 0
-  for (i in 100:500){
-    Odd &lt;- i %% 2 &gt; 0 
-    DivisbleBy3 &lt;-  i %% 3 == 0 
-    if (Odd &amp; DivisbleBy3) {
-      x &lt;- x+1
-    }
-  }
-  return(x)
-}</code></pre>
-<p>Now, we can simply type</p>
-<pre class="r"><code>count_odds()</code></pre>
-<pre><code>## [1] 66</code></pre>
-<p>And we should see the number of odds. We can also add arguments by editing the head (signature) of the function as follows:</p>
-<pre class="r"><code>count_odds &lt;- function(low, high) {
-  x &lt;- 0
-  for (i in low:high){
-    Odd &lt;- i %% 2 &gt; 0 
-    DivisbleBy3 &lt;-  i %% 3 == 0 
-    if (Odd &amp; DivisbleBy3) {
-      x &lt;- x+1
-    }
-  }
-  return(x)
-}</code></pre>
-<p>Now, we can use that function by setting different values for <code>low</code> and <code>high</code></p>
-<pre class="r"><code>count_odds(low=10, high=100)</code></pre>
-<pre><code>## [1] 15</code></pre>
-<p>Sometimes, functions do not really have an argument or return any value. They do very special things.</p>
 </div>
-<div id="exercises" class="section level1">
-<h1>Exercises</h1>
-<p>NOTE: in both of the following exercises, you are NOT ALLOWED to use any of R’s built-in functions: sum, seq or any other function. You are only allowed to use loops, if statements, and c() in addition to the logical operators (you will actually need logical operators) in both questions.</p>
-<ol style="list-style-type: decimal">
-<li>Write a program that finds the sum of all odd numbers between 200 and 400. You can validate your result using the following command:</li>
-</ol>
-<pre class="r"><code>sum(seq(from=201,to=400,by=2))</code></pre>
-<p>which returns 30000.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Write a program that count the prime numbers below 1000.</li>
-</ol>
-<p>Hints: Start your loop from 2 and not from 1. Also, you can use the following math operator: <code>x %% y</code> to find the remainder after division. For example, 6 / 3 = 2, and hence, 6 %% 3 will evaluate to 0 (no remainder). However, 6%%4 will return 2, because the result is 1 but with a remainder of 2. You should validate your submission with the numbers in <a href="https://www.factmonster.com/math-science/mathematics/prime-numbers-facts-examples-table-of-all-up-to-1000">this list</a>.</p>
-<p>Your script should return 168 numbers in total.</p>
+<div id="jump-from-vectors-to-matrices" class="section level1">
+<h1>Jump from vectors to matrices</h1>
+<p>A vector is just a set of numbers. In real life we deal with sets of numbers, usually called a table or a matrix. We’ll see in this section how we create a matrix, how to select specific elements in rows and columns</p>
+<p>Let’s create a simple matrix:</p>
+<pre class="r"><code>my_matrix  &lt;- matrix(seq(from=1,to=20,by=1), nrow=5,ncol=4)</code></pre>
+<p>Which should create a matrix numbered from 1 to 20 with 5 rows and 4 columns.</p>
+<pre class="r"><code>my_matrix</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    6   11   16
+## [2,]    2    7   12   17
+## [3,]    3    8   13   18
+## [4,]    4    9   14   19
+## [5,]    5   10   15   20</code></pre>
+<p>Now that we have a matrix, what can we do with it? A matrix is simply a table of numbers. Let’s see some useful functions that help us handle a matrix (or any table). Meet <code>dim</code> which prints the dimensions of the matrix, or the number of rows followed by the number of columns.</p>
+<pre class="r"><code>dim(my_matrix)</code></pre>
+<pre><code>## [1] 5 4</code></pre>
+<p>Now, <code>sum</code> will return the sum of the whole matrix</p>
+<pre class="r"><code>sum(my_matrix)</code></pre>
+<pre><code>## [1] 210</code></pre>
+<p>To find the sum of rows or columns separately, we need to use special functions: <code>rowSums</code> which returns a list of the sum of each row, and <code>colSums</code> which does the same with columns.</p>
+<pre class="r"><code>rowSums(my_matrix)</code></pre>
+<pre><code>## [1] 34 38 42 46 50</code></pre>
+<pre class="r"><code>colSums(my_matrix)</code></pre>
+<pre><code>## [1] 15 40 65 90</code></pre>
+<div id="row-and-column-indexing" class="section level2">
+<h2>Row and Column Indexing</h2>
+<p>Let’s now see how we can select specific rows and columns. To select a specific row, let’s say 3rd row, we simply need to type the position inside the bracket:</p>
+<pre class="r"><code>my_matrix[3,]</code></pre>
+<pre><code>## [1]  3  8 13 18</code></pre>
+<p>And to select multiple rows, we can type those rows inside a <code>c()</code></p>
+<pre class="r"><code>my_matrix[c(1,3),]</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    6   11   16
+## [2,]    3    8   13   18</code></pre>
+<p>Which will return the first and third row of the table. Let’s now select the 2nd and 4th column</p>
+<pre class="r"><code>my_matrix[,c(2,4)]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    6   16
+## [2,]    7   17
+## [3,]    8   18
+## [4,]    9   19
+## [5,]   10   20</code></pre>
+<p>The only thing that have changed is the position of index to be after the comma. So anything before the comma is to index the row, and anything after the comma is used to index the column.</p>
+<p>We can also use a logical index. For example, let’s select only the first two rows. First, we need to create an index (or a sequence) of all rows:</p>
+<pre class="r"><code>row_index &lt;- 1:5 # we can also use    seq(from=1, to=5, by=1)</code></pre>
+<p>Now, we want to retrieve the first two rows using logical indexing. To select the first 2 numbers:</p>
+<pre class="r"><code>row_index &lt; 3</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<p>And we can use that as our index:</p>
+<pre class="r"><code>my_matrix[row_index &lt; 3,]</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    6   11   16
+## [2,]    2    7   12   17</code></pre>
+<p>Which will return the first two rows, because only the first two numbers evaluate True.</p>
+<p>We can use logical indexing in filtering records from large tables and you’ll definitly make use of it all the time.</p>
+</div>
+<div id="matrices-to-dataframes" class="section level2">
+<h2>Matrices to DataFrames</h2>
+<p>Now let’s talk about actual data that you might find in the real-world. First of all, we can see that the matrix is already some kind of data, but it lacks labels and names. So let’s make that into a table with names using <code>data.frame</code>:</p>
+<pre class="r"><code>df &lt;- data.frame(my_matrix)
+df</code></pre>
+<pre><code>##   X1 X2 X3 X4
+## 1  1  6 11 16
+## 2  2  7 12 17
+## 3  3  8 13 18
+## 4  4  9 14 19
+## 5  5 10 15 20</code></pre>
+<p>Now, we see that our table has column headings and row numbers. To clean up things a little bit, we can use <code>names</code> function to change the column names into some fictional names (sorry real-world):</p>
+<pre class="r"><code>names(df) &lt;- c('age', 'sex', 'day', 'time')
+df</code></pre>
+<pre><code>##   age sex day time
+## 1   1   6  11   16
+## 2   2   7  12   17
+## 3   3   8  13   18
+## 4   4   9  14   19
+## 5   5  10  15   20</code></pre>
+<p>Which should improve things for us. Do you know why? Becasue we can now select columns by their names, instead of by their positions as we did in matrices. To select the first column (i.e., age), we used this before:</p>
+<pre class="r"><code>df[,c(1)]</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>But now in the new world of data.frames, we can do this:</p>
+<pre class="r"><code>df[,c('age')]</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Or we can simply write the $ sign and then the column name:</p>
+<pre class="r"><code>df$age</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>All those ways go to Rome. But we aren’t really going there, so I’ll stick with the $ notation to select single columns. If we want to select multiple columns, then we can do either one of the first two options (by position or by name).</p>
+<p>We can use all the functions we learned about: <code>dim</code>, <code>nrow</code>, <code>ncol</code>, etc. We also have a few more functions to learn about. Let’s use fictional data:</p>
+<pre class="r"><code>x &lt;- data.frame(student_name=c('Roy','Tania','Sara'), 
+          age=c(35, 23, 28),
+          sex=c('m','f','f'))
+x</code></pre>
+<pre><code>##   student_name age sex
+## 1          Roy  35   m
+## 2        Tania  23   f
+## 3         Sara  28   f</code></pre>
+<p>We can select age column and deal with it as a list of numbers:</p>
+<pre class="r"><code>x$age</code></pre>
+<pre><code>## [1] 35 23 28</code></pre>
+<p>And this means we can filter rows based on age. For example, let’s use logical indexing for rows where age is bigger than 25:</p>
+<pre class="r"><code>x$age &gt; 25</code></pre>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<p>And we can use that (with potentially any other conditions) to filter rows:</p>
+<pre class="r"><code>x[x$age&gt;25, ]</code></pre>
+<pre><code>##   student_name age sex
+## 1          Roy  35   m
+## 3         Sara  28   f</code></pre>
+<p>Let’s find the name of the students whose age is bigger than 25.</p>
+<pre class="r"><code>x$student_name[x$age &gt; 25]</code></pre>
+<pre><code>## [1] Roy  Sara
+## Levels: Roy Sara Tania</code></pre>
+<p>Or we can simply type</p>
+<pre class="r"><code>x[x$age &gt; 25, 'student_name'] </code></pre>
+<pre><code>## [1] Roy  Sara
+## Levels: Roy Sara Tania</code></pre>
+<p>See how in the row section we used a filter and in the column (after the comma) we selected a specific column. We can also do:</p>
+<pre class="r"><code>x[x$age &gt; 25,]$student_name</code></pre>
+<pre><code>## [1] Roy  Sara
+## Levels: Roy Sara Tania</code></pre>
+<p>All those are valid ways of filtering and selecting elements in our table.</p>
+<p>Now that we have explored this fake dataset, let’s see some real data.</p>
+<p>We’ll deal with a baby names datasets that tracks the popularity of individual baby names from the U.S. Social Security Administration To install the data, we’ll install a package and then use <code>library</code> command to add the data.</p>
+<pre class="r"><code>install.packages('babynames')
+library(babynames)</code></pre>
+<p>We first want to look at the first few rows to see what we have:</p>
+<pre class="r"><code>head(babynames)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##    year sex   name          n   prop
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;
+## 1  1880 F     Mary       7065 0.0724
+## 2  1880 F     Anna       2604 0.0267
+## 3  1880 F     Emma       2003 0.0205
+## 4  1880 F     Elizabeth  1939 0.0199
+## 5  1880 F     Minnie     1746 0.0179
+## 6  1880 F     Margaret   1578 0.0162</code></pre>
+<p>We have 5 columns: year, sex, name, n (which I assume is the number of babies with that name at the given year and sex) and prop (i.e., proportion).</p>
+<p>We can also look at the last few rows using <code>tail</code></p>
+<pre class="r"><code>tail(babynames)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##    year sex   name       n       prop
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;
+## 1  2017 M     Zyhier     5 0.00000255
+## 2  2017 M     Zykai      5 0.00000255
+## 3  2017 M     Zykeem     5 0.00000255
+## 4  2017 M     Zylin      5 0.00000255
+## 5  2017 M     Zylis      5 0.00000255
+## 6  2017 M     Zyrie      5 0.00000255</code></pre>
+</div>
+<div id="selecting-rows-also-known-as-filtering" class="section level2">
+<h2>Selecting rows (also known as: filtering)</h2>
+<p>Just like in matrices, we can filter rows in a dataframe using logical indexing. For example, let’s filter only records of 2017:</p>
+<pre class="r"><code>babynames [ babynames$year==2017 , ]</code></pre>
+<pre><code>## # A tibble: 32,469 x 5
+##     year sex   name          n    prop
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;
+##  1  2017 F     Emma      19738 0.0105 
+##  2  2017 F     Olivia    18632 0.00994
+##  3  2017 F     Ava       15902 0.00848
+##  4  2017 F     Isabella  15100 0.00805
+##  5  2017 F     Sophia    14831 0.00791
+##  6  2017 F     Mia       13437 0.00717
+##  7  2017 F     Charlotte 12893 0.00688
+##  8  2017 F     Amelia    11800 0.00629
+##  9  2017 F     Evelyn    10675 0.00569
+## 10  2017 F     Abigail   10551 0.00563
+## # … with 32,459 more rows</code></pre>
+<p>Which we can deal with as another table. We can simply ask how many records do we have by using <code>nrow</code> or <code>dim</code>:</p>
+<pre class="r"><code>nrow(babynames [ babynames$year==2017 , ])</code></pre>
+<pre><code>## [1] 32469</code></pre>
+<p>Let’s make very simple plots with name frequencies across all years. We will use a function called <code>plot</code> which will require an x-axis and a y-axis. Both x and y should be a list of numbers. For example, we will plot the frequency of <code>Sarah</code> across all years</p>
+<pre class="r"><code>result_sarah_n &lt;- babynames$n[babynames$name=='Sarah' &amp; babynames$sex == 'F']
+result_sarah_year &lt;- babynames$year[babynames$name=='Sarah' &amp; babynames$sex == 'F']</code></pre>
+<p>Now we are ready to use <code>plot</code></p>
+<pre class="r"><code>plot(result_sarah_year, result_sarah_n, type='l')</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAADAFBMVEUAAAABAQECAgIDAwMEBAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1eXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29wcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////isF19AAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nOzdeYCM9eMH8PfsYdc6133fRK4KIV1yU36l8JUOhBJJuYpKKoUOSeTqvokkVxShi0SkQ5FKB8nNYu3O/GZ2dnZnd2dnnuezz/P5PM8879cf7eyzs5/P2/R4m+N5Pg88REQkBKoDEBHZFQuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEgQC5SISBALlIhIEAuUiEiQpQv093FjiYiM8sgpgzvK0gU6BkRExnnX4I6ydIHeg6snExEZ40K8bnBHWbxAn1EdgYiixk0sUCIiMSxQIiJBLFAiIkEsUCIiQSxQIiJBLFAi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" width="672" /></p>
+<p>Did you like that simple plot? We’ll do more plotting next lab and it won’t be this ugly, but now let’s master the basics.</p>
+<p>I want to know what are the top 5 names in the year 1989. How should we approach this? Here we will combine lots of what we have learned previously: <code>sort</code> with logical indexing. To know the most frequent name in 1972, we first need to filter data in 1972:</p>
+<pre class="r"><code>data_subset &lt;- babynames[babynames$year == 1989,]</code></pre>
+<p>Now, we’ll sort the proportions with setting <code>decreasing=false</code> and select the first element (or we can use <code>max(data_subset)</code>)</p>
+<pre class="r"><code>most_freq_n &lt;- sort(data_subset$n, decreasing = TRUE)[1]
+most_freq_n</code></pre>
+<pre><code>## [1] 65382</code></pre>
+<p>Now, we will look for the records whose <code>n</code> equals what we just got and print those records:</p>
+<pre class="r"><code>data_subset[ data_subset$n == most_freq_n , ]</code></pre>
+<pre><code>## # A tibble: 1 x 5
+##    year sex   name        n   prop
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;
+## 1  1989 M     Michael 65382 0.0312</code></pre>
+<p>If you really want to read few good articles about this dataset, then here are few links:</p>
+<ul>
+<li><a href="https://www.prooffreader.com/category/baby-names/">A couple of cool articles using this dataset</a></li>
+<li><a href="https://www.kaggle.com/kaggle/us-baby-names/kernels?sortBy=voteCount&amp;group=everyone&amp;pageSize=20&amp;datasetId=13">Kaggle also got few good explorations – although some are in Python, you still want to be inspired on what analysis you can run. For example, what is the effect of US president on babynames? what about sport Athlets? etc</a></li>
+<li><a href="http://www.randalolson.com/2014/12/06/top-25-most-gender-neutral-names-in-the-u-s/">Here is an interesting article on the most gender neutral names in the U.S.</a></li>
+</ul>
+<p>We’ll continue with this dataset later on – hopefully after you skim through those links.</p>
+</div>
+</div>
+<div id="exercise" class="section level1">
+<h1>Exercise</h1>
+<ul>
+<li>Write a script that computes the mean of each column in a matrix (without using the function <code>mean</code>), and compare your result with <code>colMeans</code>.</li>
+<li>Using the <code>babynames</code> dataset, do the following (and you are free to use any function now):</li>
+<li>How many records (i.e., rows) we have for female baby names in 1950?</li>
+<li>What is the most popular male name in 2010? What about the female name?</li>
+<li>Extract the frequency of the name “Mohammed” across all years and then use <code>plot</code> function. What about other names? Just type as many names as you can until you see names that have interesting trends. When you see something interesting, just use it in your final solution and tell me why you think it is interesting (probaby in blackboard when you submit the assignment)</li>
+</ul>
 </div>
 
 

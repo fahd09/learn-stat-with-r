@@ -1,0 +1,149 @@
+---
+title: "Lab 5: Randomness in R"
+author: "Fahd Alhazmi"
+output:
+  html_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+Today we’ll look at ways of how to generate random numbers in R and we’ll also do some very simple statistical simulations.
+
+# sample
+
+First tool we'll use to generate random numbers is `sample`. Random sampling is a key tool that allows us to move from the descriptive statistics to the inferential statistics. In R, we can simply use `sample` to select a subset from a population.
+
+```{r}
+numbers <- c(1,2,3,4,5,6,7,8,9,10)
+sampled_numbers <- sample(numbers, 1000, replace=TRUE)
+sampled_numbers
+```
+
+Let’s make a simple histogram of those numbers
+
+```{r}
+hist(sampled_numbers)
+```
+
+# runif
+
+With `runif`, we can sample any given number of observations -- however, instead of dealing with discrete elements (such as numbers from 1 to 10), we simply provide the range of the sampled numbers. Runif will sample random numbers between each number having equal chance of being sampled.
+
+```{r}
+sampled_numbers <- runif(1000, min=0, max=1)
+hist(sampled_numbers)
+```
+
+# rbinom
+
+With `rbinom`, we can sample from a binomial distribution. Binomial distributions is what we get when we have only two binary outcomes (TRUE/FALSE). For example, we can think of coin flips as being sampled from a binomial distribution with P=0.5, indicating a fair coin with p(Head)=0.5-- We only need to write the number of trials (N) and the size of each trial (how many coin flips in each of those N trials), and finally we need to provide the probability of getting the outcome. Let’s for example sample 10 coin flips with P=0.5
+
+```{r}
+coin_flips <- rbinom(10,1,.5)
+coin_flips
+```
+
+Theoretically, we know that P(H) should be 0.5 if the coin is fair (unbiased). Here, we are getting experimental values of those flips (just think of them as results of actual coin flips). We can ask about the probability of heads by simply finding the sum of heads divided by the number of coin flips -- or by simply finding the mean
+
+```{r}
+mean(coin_flips)
+```
+
+You’ll notice that this mean value will be different every time you run the last two lines because every time you are sampling from a different experiment. Why do we get different values then if the mathematical value is 0.5? The answer lies in sampling error. As we randomly sample from the world (or in simulation), we should expect some variability in the selection of the sample. This variability should decrease as you increase your N.
+
+Let’s run a very short simulation: we’ll sample 10 coin flips multiple times (say 100). In each experiment, we’ll record the mean of heads in those flips.
+
+```{r}
+flips_means <- c()
+n_experimemnts <- 50
+for(i in 1:n_experimemnts){
+  flips_means[i] <- mean(rbinom(10, 1, 0.5))  
+}
+hist(flips_means)
+```
+
+As you can see from the histogram, we see that the binomial distribution actually approximates the normal distribution. Try now and increase the n_experiments -- what do you notice about the distribution?
+
+# rnorm
+
+We finally want to talk about normal distribution because it is everywhere. You can easily sample numbers from a normal distribution using `rnorm`  -- you only need to provide how many observations you want, and the mean and standard deviation of those observations.
+
+For example, here we’ll sample 5 numbers from a normal distribution of a mean of 10 and a standard deviation of 4
+
+```{r}
+rnorm(5, mean=10, sd=4)
+```
+
+Again, you’ll get a different value each time you run this command.
+
+Let’s do another (but very similar) simulation. Here, we’ll repeatedly sample from a normal distribution of a given mean and a given standard deviation. We then will record the mean of each sample. After we record the means, we will make a visualization of the means and then report the mean and standard deviation of those sample means.
+
+```{r}
+normal_means <- c()
+n_experimemnts <- 20
+n_subjects <- 20
+for(i in 1:n_experimemnts){
+  normal_means[i] <- mean(rnorm(n_subjects, mean=20, sd=5))  
+}
+```
+
+Now let’s print the mean of the means:
+
+```{r}
+mean(normal_means)
+```
+
+And here is the standard deviation of the means 
+
+```{r}
+sd(normal_means)
+```
+
+The question now, why is the standard deviation of the means is much smaller than the standard deviation of the samples (which was set to 5)? You might need to read a bit here and there but just keep in mind that the standard deviation of the means is called the Standard Error of the mean.
+
+Let’s do the same experiment again but now we’ll keep all raw numbers so that we can make some pretty visualizations with ggplot
+
+```{r}
+n_experimemnts <- 20
+n_subjects <- 50
+my_df <- data.frame()
+for (i in 1: n_experimemnts){
+	scores_samples_df <-cbind(rnorm(n_subjects, mean=20, sd=5), rep(i, each=n_subjects))	
+	my_df<-rbind(my_df, scores_samples_df)	
+}
+names(my_df) <- c("scores", "samples")
+
+library(ggplot2)
+ggplot(my_df, aes(x=scores)) + geom_histogram() + 
+  facet_wrap(~samples) +
+  theme_classic()
+```
+
+And using some basic dplyr we can find the mean of each sample:
+
+```{r}
+library(dplyr)
+sample_means<- my_df %>%
+  group_by(samples) %>%
+  summarize(means = mean(scores))
+sample_means
+```
+
+Let’s calculate and print the mean of the sample means:
+
+```{r}
+mean(sample_means$means)
+```
+
+And calculate the standard deviation of those values
+
+```{r}
+sd(sample_means$means)
+```
+
+I encourage you to change the numbers (e.g., n_subjects) and see how increasing or decreasing the number of subjects will change the mean of sample means and the standard deviation of the sample means (also known as the standard error).
+
+Let’s stop here today. We’ll resume next class.
