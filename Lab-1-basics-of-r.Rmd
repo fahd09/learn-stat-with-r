@@ -1,0 +1,331 @@
+---
+title: "Lab 1: Basics of R"
+author: "Fahd Alhazmi"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+# R Installation
+
+The R programming language is a widely-used open source language used mainly for statistical analysis. R is not only used in academia but also in industry at big companies like Google, Facebook and many others. The skills you will learn from this course will not only help your studies but will, hopefully, help you get a decent job!
+
+First step to use R is to download it from the [R project home page](https://www.r-project.org/) and then install it in your computer. 
+
+We will also be using RStudio which is an integrated development environment (IDE) for R. So you also need to download it from [RStudio website](https://www.rstudio.com/products/rstudio/download/) and install it.
+
+And now we are ready to dive in.
+
+# Basic commands
+
+The assignment operator can be used to store values arbitrary variable names:
+```{r}
+x <- 1
+```
+This stores the value of 1 into a variable called X. Now whenever we type X, R knows that X has a value of 1. 
+We can also use a command called print to print a given number. For example
+
+```{r}
+print('hello world') 
+```
+
+Should print "hello world".
+
+You can also use R as a calculator and you can use all math operations: +, -, /, * and ^.  For example:
+
+```{r}
+1+1
+```
+
+Should return 2
+
+Now let's do calculations using variables:
+
+```{r}
+earned<-100
+spent<-50
+profit <- earned-spent
+print(profit)
+```
+
+And if you multiply by 365 to get the annual profit:
+
+```{r}
+Annual_profit <- profit * 365
+```
+Remember to always use informative variable names that does not contain spaces.
+
+# Vectors and indexing
+
+We can also store a list of numbers (called vector):
+
+```{r}
+X<- c(1,2,3)
+```
+
+The c(..) is always used to concatenate a list of things. They can be anything you want as long as R understands it. Lets make a variable for profit per weekday:
+
+```{r}
+profit_by_day <- c(29,40,30,10,2,40)
+```
+We can access any element in that list by simply typing the address or the index of that numbre. For example, to pull the first number we can type:
+```{r}
+profit_by_day[1] 
+```
+And to pull the first 3 numbers by using : 
+```{r}
+profit_by_day[1:3]
+```
+Note that 1:3 will simply make a list 1,2,3. It is identical to c(1,2,3) but will come to that later.
+We can also edit any given element.
+```{r}
+profit_by_day[1] <- 100
+```
+We can use `length` function to print the size of the vector
+
+```{r}
+length(profit_by_day)
+```
+We can perform operations on vectors:
+```{r}
+profit_by_day * 100 
+```
+We can finally extract specific elements from vectors:
+```{r}
+profit_by_day[6]
+```
+Or 
+```{r}
+profit_by_day[c(1,4,6)] 
+```
+
+to extract the numbers corresponding to the 1st, 4th and 6th day.
+
+# Logical operations and indexing
+
+Variables can store logical values instead of numbers. Logical values are TRUE and FALSE. R deal with those values as logical value and not as text. For example, we an assess the truth of any expression and R will tell us right away. Those are the logical operators used in R:  <, >, ==, <=, >=, !=
+
+Is 1+1 equals to 2 or 1?
+
+```{r}
+1+1 == 2 
+```
+
+```{r}
+1+1 == 1
+```
+
+You can also evaluate multiple logical operators using:    ! (not) ,  | (or) ,  & (and). Here are few examples:
+
+```{r}
+1==1
+```
+```{r}
+!(1==1)
+```
+```{r}
+(1==1) | (1==5)
+```
+```{r}
+(1==1) & (2==5)
+```
+
+We always use logical operations when dealing with vectors. For example, we can ask what values in profit_by_day are greater than 40  by 
+
+```{r}
+profit_by_day <- c(29,40,30,10,2,40)
+profit_by_day > 20
+```
+Now we turn to indexing: we can use logical operator to select elements in the vectors according to some condition(s):
+```{r}
+profit_by_day[profit_by_day > 20]
+```
+Or if we have a separate vector for days:
+```{r}
+days <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+days[profit_by_day>20]
+```
+Should print the days where profit exceeds 40. We can use multiple logical operators as well:
+```{r}
+sunny <- c('yes','yes','no','yes','no','no','no')
+```
+And then select the days where profit exceeds 40 AND sunny is 'yes'
+```{r}
+days[profit_by_day>20  &  sunny=='yes']
+```
+Another example:
+```{r}
+days[profit_by_day>40 | sunny!='yes']
+```
+
+# Control Statements
+Naturally, R evaluates each line by order. However, we can use some tools that can control this behavior and, say, skip few lines or execute a specific command only if some condition is met. There are three kinds of control statements: while, for and if.
+
+```{r, eval=FALSE}
+while (  condition )  {
+  # DO THINGS HERE IF condition IS TRUE
+}
+```
+
+Let's look at an example. Let's say we want to add numbers to a variable called x, but if x is greater than 10, say, the loop should stop. In R, we can write:
+
+```{r}
+x<-0
+while(x< 10) {
+  x<-x+1
+}
+print(x)
+```
+
+We can move print(x) inside the loop to see exactly when it stops.
+
+```{r}
+x <- 0
+while(x<10){
+  x<-x+1
+  print(x)
+}
+```
+
+
+The syntax of the for-loop is as follows:
+
+```{r, eval=FALSE}
+for (VAR in VECTOR) {
+  ## DO THINGS HERE POSSIBLY WITH VAR
+}
+```
+
+VAR in VECTOR simply means that elements of the vector will be assigned to the variable. If we do: `x in 1:10`, then, x will first be assigned a value of 1, and in the next iteration it will be the next value in 1:10 which is 2 and etc.
+
+```{r}
+for (x in 1:10){
+  print(x)
+}
+```
+
+However, we can also iterate over any vector of elements and not necessarily numbers. Let's use this to calculate the balance after a monthly compund interest rate of 2%
+```{r}
+balance <- 1000
+for (month in 1:12){
+  newbalance <- balance * 0.02
+  balance <- balance + newbalance
+}
+print(balance)
+```
+We can also combine those control statements. For example, let's calculate the number of odd numbers between 100 and 500, which are divisible by 3
+
+```{r}
+x <- 0
+for (i in 100:500){
+  Odd <- i %% 2 > 0 
+  DivisbleBy3 <-  i %% 3 == 0	
+  if (Odd & DivisbleBy3) {
+    x <- x+1
+  }
+}
+```
+
+We can also use ```break``` inside for loop to break the loop and stop immediately -- it will not execute any code below break and will not go into any more iterations. For example, the following code is supposed to print all numbers from 1 to 5. However, we added an IF statement at x == 3, which, if true, will break the for-loop.
+
+```{r}
+x <- 1:5
+for (value in x){
+  if (value==3) {
+    break
+    }
+  print(value)
+}
+```
+
+# Functions
+Now let's talk about functions. Functions in R are custom commands that execute a given script and at the end give us an output. For example, sqrt is a function in R that calculates the square root of a given number.
+
+```{r}
+sqrt(25)
+```
+We can confirm 
+```{r}
+sqrt(25) == 25 ^ 0.5
+```
+
+However, functions usually have `arguments` or inputs that we want to use. Let's consider the function `round`
+
+```{r}
+round(3.12345)
+```
+But we can also use a second arguments that says how many decimals we want to keep. If we use 2 then we will keep only 2 decimals.
+
+```{r}
+x<- 3.2563254
+round(x) 
+```
+```{r}
+round(x, digits = 2)
+```
+We can actually convert our script that count the number of odds between 100 and 500 to a function so that we can use it repeatedly and share it with others. The only thing is a special command at the end called return, to make any value accessible outside the function.
+
+```{r}
+count_odds <- function() {
+  x <- 0
+  for (i in 100:500){
+    Odd <- i %% 2 > 0 
+    DivisbleBy3 <-  i %% 3 == 0	
+    if (Odd & DivisbleBy3) {
+      x <- x+1
+    }
+  }
+  return(x)
+}
+```
+
+Now, we can simply type
+
+```{r}
+count_odds()
+```
+
+And we should see the number of odds. We can also add arguments by editing the head (signature) of the function as follows:
+
+```{r}
+count_odds <- function(low, high) {
+  x <- 0
+  for (i in low:high){
+    Odd <- i %% 2 > 0 
+    DivisbleBy3 <-  i %% 3 == 0	
+    if (Odd & DivisbleBy3) {
+      x <- x+1
+    }
+  }
+  return(x)
+}
+```
+
+Now, we can use that function by setting different values for ```low``` and ```high```
+
+```{r}
+count_odds(low=10, high=100)
+```
+
+Sometimes, functions do not really have an argument or return any value. They do very special things. 
+
+# Exercises
+
+NOTE: in both of the following exercises, you are NOT ALLOWED to use any of R's built-in functions: sum, seq or any other function. You are only allowed to use loops, if statements, and c() in addition to the logical operators (you will actually need logical operators) in both questions.
+
+1. Write a program that finds the sum of all odd numbers between 200 and 400. You can validate your result using the following command: 
+```{r, eval=FALSE}
+sum(seq(from=201,to=400,by=2))
+```
+which returns 30000.
+
+2. Write a program that count the prime numbers below 1000.
+
+Hints: Start your loop from 2 and not from 1.  Also, you can use the following math operator:   ```x %% y```   to find the remainder after division. For example, 6 / 3 = 2, and hence, 6 %% 3 will evaluate to 0 (no remainder). However, 6%%4 will return 2, because the result is 1 but with a remainder of 2. You should validate your submission with the numbers in [this list](https://www.factmonster.com/math-science/mathematics/prime-numbers-facts-examples-table-of-all-up-to-1000).
+
+Your script should return 168 numbers in total.
